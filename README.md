@@ -1,6 +1,8 @@
 bytes.onl
 ---
 > Backend API for aggregating price data for ERC20 tokens
+---
+
 ### Building
 
 ```sh
@@ -30,7 +32,7 @@ Usage:
 ##### http
 Description: 
 
-Starts the backend HTTP server. The server can be configured through environment variables, or through an optional `.env` file. There is an example env file provided at `.env.example` 
+Starts the backend REST API server. The server can be configured through environment variables, or through an optional `.env` file. There is an example env file provided at `.env.example` 
 
 Usage:
 
