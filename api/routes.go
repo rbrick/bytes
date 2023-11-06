@@ -38,6 +38,14 @@ func (rh *RoutesHandler) Price(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, price)
 }
 
+// Wallet fetches information about a passed in wallet such as citizens staked, BYTES present in the wallet, etc.
+func (*RoutesHandler) Wallet(ctx *gin.Context) {
+
+}
+
+// bytesComputer is a lazy computer for the price of 'BYTES'. The prices are cached in-memory
+// for 5 minutes, and when it is expired, this function will be called to recompute the value.
+// It isn't actively re-calculated i.e. it's calculated upon access.
 func (rh *RoutesHandler) bytesComputer() (models.Prices, error) {
 	priceInEther, err := rh.bytesETHPricer.Price()
 
@@ -59,9 +67,6 @@ func (rh *RoutesHandler) bytesComputer() (models.Prices, error) {
 		EtherPrice: convertedEther.Text('f', 16),
 	}, nil
 }
-
-// Wallet fetches information about a passed in wallet such as citizens staked, BYTES present in the wallet, etc.
-func (*RoutesHandler) Wallet(ctx *gin.Context) {}
 
 func NewRoutes(rpcClient *ethclient.Client) Routes {
 	routesHandler := &RoutesHandler{
