@@ -4,3 +4,4 @@ bytes
 *.json
 !abi/*.json
 !tests/abifix_test.abi.json
+.env

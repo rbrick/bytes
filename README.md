@@ -26,3 +26,14 @@ Usage:
 ```sh
 ./bytes abifix [file]
 ```
+
+##### http
+Description: 
+
+Starts the backend HTTP server. The server can be configured through environment variables, or through an optional `.env` file. There is an example env file provided at `.env.example` 
+
+Usage:
+
+```sh
+./bytes http
+```
