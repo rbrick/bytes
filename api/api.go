@@ -1,14 +1,36 @@
 package api
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/gin-gonic/gin"
+)
 
-func NewServer() *gin.Engine {
+var (
+	Bytes2Address = common.HexToAddress("0xa19f5264F7D7Be11c451C093D8f92592820Bea86")
+	USDCAddress   = common.HexToAddress("0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48")
+)
+
+type Server struct {
+	engine *gin.Engine
+}
+
+func (s *Server) Run(addr ...string) error {
+	return s.engine.Run(addr...)
+}
+
+func NewServer(rpcClient *ethclient.Client) *Server {
 	engine := gin.Default()
+
+	routesHandler := NewRoutes(rpcClient)
 
 	v1Group := engine.Group("/api/v1")
 	{
-		v1Group.GET("/price", Price)
-		v1Group.GET("/wallet/:address", Wallet)
+		v1Group.GET("/price", routesHandler.Price)
+		v1Group.GET("/wallet/:address", routesHandler.Wallet)
 	}
-	return engine
+
+	return &Server{
+		engine: engine,
+	}
 }

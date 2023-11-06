@@ -46,3 +46,11 @@ func (pricer *TokenPricer) Price() (*big.Int, error) {
 
 	return oracle.GetRate(nil, pricer.tokenAddress, pricer.denominationAddress, false)
 }
+
+func NewTokenPricer(rpc *ethclient.Client, tokenAddress, denominationAddress common.Address) Pricer {
+	return &TokenPricer{
+		rpc:                 rpc,
+		tokenAddress:        tokenAddress,
+		denominationAddress: denominationAddress,
+	}
+}
