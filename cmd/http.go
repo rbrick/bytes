@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/rbrick/bytes/api"
 	"github.com/spf13/cobra"
 )
 
@@ -10,6 +11,9 @@ var httpCmd = &cobra.Command{
 	Short: "Starts HTTP server",
 	Long:  `Starts the backend RESTful API service`,
 	Run: func(cmd *cobra.Command, args []string) {
+		server := api.NewServer()
+
+		server.Run()
 	},
 }
 
