@@ -28,17 +28,55 @@ var (
 	_ = event.NewSubscription
 )
 
+// NeoTokyoStakerLPPosition is an auto generated low-level Go binding around an user-defined struct.
+type NeoTokyoStakerLPPosition struct {
+	Amount          *big.Int
+	TimelockEndTime *big.Int
+	Points          *big.Int
+	Multiplier      *big.Int
+}
+
 // NeoTokyoStakerPoolConfigurationInput is an auto generated low-level Go binding around an user-defined struct.
 type NeoTokyoStakerPoolConfigurationInput struct {
+	AssetType     uint8
+	DaoTax        *big.Int
+	RewardWindows []NeoTokyoStakerRewardWindow
+}
+
+// NeoTokyoStakerRewardWindow is an auto generated low-level Go binding around an user-defined struct.
+type NeoTokyoStakerRewardWindow struct {
+	StartTime *big.Int
+	Reward    *big.Int
+}
+
+// NeoTokyoStakerStakedS1CitizenOutput is an auto generated low-level Go binding around an user-defined struct.
+type NeoTokyoStakerStakedS1CitizenOutput struct {
+	CitizenId       *big.Int
+	StakedBytes     *big.Int
+	TimelockEndTime *big.Int
+	Points          *big.Int
+	StakedVaultId   *big.Int
+	HasVault        bool
+}
+
+// NeoTokyoStakerStakedS2CitizenOutput is an auto generated low-level Go binding around an user-defined struct.
+type NeoTokyoStakerStakedS2CitizenOutput struct {
+	CitizenId       *big.Int
+	StakedBytes     *big.Int
+	TimelockEndTime *big.Int
+	Points          *big.Int
 }
 
 // NeoTokyoStakerStakerPosition is an auto generated low-level Go binding around an user-defined struct.
 type NeoTokyoStakerStakerPosition struct {
+	StakedS1Citizens []NeoTokyoStakerStakedS1CitizenOutput
+	StakedS2Citizens []NeoTokyoStakerStakedS2CitizenOutput
+	StakedLPPosition NeoTokyoStakerLPPosition
 }
 
 // NeoTokyoStakerMetaData contains all meta data concerning the NeoTokyoStaker contract.
 var NeoTokyoStakerMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bytes\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_s1Citizen\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_s2Citizen\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_lpToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_identity\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_sbt\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_vaultCap\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_noVaultCap\",\"type\":\"uint256\"}],\"name\":\"\",\"outputs\":null,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"BYTES\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_CAPS\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_CREDITS\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_LP\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_POOLS\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_TIMELOCKS\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"IDENTITY\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"LP\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MANAGER\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"NO_VAULT_CAP\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"NT_STAKED_CITIZEN\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"S1_CITIZEN\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"S2_CITIZEN\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"UNIVERSAL\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"VAULT\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"VAULT_CAP\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ZERO_RIGHT\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"claimReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_vaultedCap\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_unvaultedCap\",\"type\":\"uint256\"}],\"name\":\"configureCaps\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string[]\",\"name\":\"_identityCreditYields\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_points\",\"type\":\"uint256[]\"}],\"name\":\"configureIdentityCreditPoints\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"_citizenRewardRates\",\"type\":\"uint256[]\"},{\"internalType\":\"string[]\",\"name\":\"_vaultRewardRates\",\"type\":\"string[]\"},{\"internalType\":\"string[]\",\"name\":\"_identityCreditYields\",\"type\":\"string[]\"}],\"name\":\"configureIdentityCreditYields\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_lp\",\"type\":\"address\"}],\"name\":\"configureLP\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"structNeoTokyoStaker.PoolConfigurationInput[]\",\"name\":\"_inputs\",\"type\":\"tuple[]\"}],\"name\":\"configurePools\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256[]\",\"name\":\"_timelockIds\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_encodedSettings\",\"type\":\"uint256[]\"}],\"name\":\"configureTimelockOptions\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string[]\",\"name\":\"_vaultCreditMultipliers\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_multipliers\",\"type\":\"uint256[]\"}],\"name\":\"configureVaultCreditMultipliers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_vaultId\",\"type\":\"uint256\"}],\"name\":\"getConfiguredVaultMultiplier\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_citizenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_vaultId\",\"type\":\"uint256\"}],\"name\":\"getCreditYield\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"getPendingPoolReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_staker\",\"type\":\"address\"},{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"}],\"name\":\"getStakerPosition\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_staker\",\"type\":\"address\"}],\"name\":\"getStakerPositions\",\"outputs\":[{\"internalType\":\"structNeoTokyoStaker.StakerPosition\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_from\",\"type\":\"uint256\"}],\"name\":\"getTotalEmissions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"_circumstance\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_right\",\"type\":\"bytes32\"}],\"name\":\"hasRight\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"_circumstance\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_right\",\"type\":\"bytes32\"}],\"name\":\"hasRightUntil\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"identityCreditPoints\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"identityCreditYield\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"\",\"type\":\"uint8\"}],\"name\":\"lastRewardTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lockLP\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lpLocked\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"managerRight\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"permissions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"\",\"type\":\"uint8\"}],\"name\":\"rewardAccrued\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_managedRight\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_managerRight\",\"type\":\"bytes32\"}],\"name\":\"setManagerRight\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"_circumstance\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_right\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_expirationTime\",\"type\":\"uint256\"}],\"name\":\"setPermit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_timelockId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"stake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"stakedS1\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"stakedBytes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"stakedVaultId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"hasVault\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"stakedS2\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"stakedBytes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"stakerLPPosition\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"multiplier\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"timelockOptions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"vaultCreditMultiplier\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bytes\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_s1Citizen\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_s2Citizen\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_lpToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_identity\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_sbt\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_vaultCap\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_noVaultCap\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"reward\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tax\",\"type\":\"uint256\"}],\"name\":\"Claim\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"manager\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"managedRight\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"managerRight\",\"type\":\"bytes32\"}],\"name\":\"ManagementUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"updater\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"updatee\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"circumstance\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"PermitUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"staker\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timelockOption\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountOrTokenId\",\"type\":\"uint256\"}],\"name\":\"Stake\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountOrTokenId\",\"type\":\"uint256\"}],\"name\":\"Withdraw\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"BYTES\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_CAPS\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_CREDITS\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_LP\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_POOLS\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CONFIGURE_TIMELOCKS\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"IDENTITY\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"LP\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MANAGER\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"NO_VAULT_CAP\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"NT_STAKED_CITIZEN\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"S1_CITIZEN\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"S2_CITIZEN\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"UNIVERSAL\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"VAULT\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"VAULT_CAP\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ZERO_RIGHT\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"claimReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_vaultedCap\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_unvaultedCap\",\"type\":\"uint256\"}],\"name\":\"configureCaps\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string[]\",\"name\":\"_identityCreditYields\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_points\",\"type\":\"uint256[]\"}],\"name\":\"configureIdentityCreditPoints\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"_citizenRewardRates\",\"type\":\"uint256[]\"},{\"internalType\":\"string[]\",\"name\":\"_vaultRewardRates\",\"type\":\"string[]\"},{\"internalType\":\"string[]\",\"name\":\"_identityCreditYields\",\"type\":\"string[]\"}],\"name\":\"configureIdentityCreditYields\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_lp\",\"type\":\"address\"}],\"name\":\"configureLP\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"daoTax\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint128\",\"name\":\"startTime\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"reward\",\"type\":\"uint128\"}],\"internalType\":\"structNeoTokyoStaker.RewardWindow[]\",\"name\":\"rewardWindows\",\"type\":\"tuple[]\"}],\"internalType\":\"structNeoTokyoStaker.PoolConfigurationInput[]\",\"name\":\"_inputs\",\"type\":\"tuple[]\"}],\"name\":\"configurePools\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256[]\",\"name\":\"_timelockIds\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_encodedSettings\",\"type\":\"uint256[]\"}],\"name\":\"configureTimelockOptions\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string[]\",\"name\":\"_vaultCreditMultipliers\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_multipliers\",\"type\":\"uint256[]\"}],\"name\":\"configureVaultCreditMultipliers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_vaultId\",\"type\":\"uint256\"}],\"name\":\"getConfiguredVaultMultiplier\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_citizenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_vaultId\",\"type\":\"uint256\"}],\"name\":\"getCreditYield\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"getPendingPoolReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_staker\",\"type\":\"address\"},{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"}],\"name\":\"getStakerPosition\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_staker\",\"type\":\"address\"}],\"name\":\"getStakerPositions\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"citizenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"stakedBytes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"stakedVaultId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"hasVault\",\"type\":\"bool\"}],\"internalType\":\"structNeoTokyoStaker.StakedS1CitizenOutput[]\",\"name\":\"stakedS1Citizens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"citizenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"stakedBytes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"}],\"internalType\":\"structNeoTokyoStaker.StakedS2CitizenOutput[]\",\"name\":\"stakedS2Citizens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"multiplier\",\"type\":\"uint256\"}],\"internalType\":\"structNeoTokyoStaker.LPPosition\",\"name\":\"stakedLPPosition\",\"type\":\"tuple\"}],\"internalType\":\"structNeoTokyoStaker.StakerPosition\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_from\",\"type\":\"uint256\"}],\"name\":\"getTotalEmissions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"_circumstance\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_right\",\"type\":\"bytes32\"}],\"name\":\"hasRight\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"_circumstance\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_right\",\"type\":\"bytes32\"}],\"name\":\"hasRightUntil\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"identityCreditPoints\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"identityCreditYield\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"\",\"type\":\"uint8\"}],\"name\":\"lastRewardTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lockLP\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lpLocked\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"managerRight\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"permissions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"\",\"type\":\"uint8\"}],\"name\":\"rewardAccrued\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_managedRight\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_managerRight\",\"type\":\"bytes32\"}],\"name\":\"setManagerRight\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"_circumstance\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_right\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_expirationTime\",\"type\":\"uint256\"}],\"name\":\"setPermit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_timelockId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"stake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"stakedS1\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"stakedBytes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"stakedVaultId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"hasVault\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"stakedS2\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"stakedBytes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"stakerLPPosition\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timelockEndTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"points\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"multiplier\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"timelockOptions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"vaultCreditMultiplier\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enumNeoTokyoStaker.AssetType\",\"name\":\"_assetType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // NeoTokyoStakerABI is the input ABI used to generate the binding from.
@@ -841,7 +879,7 @@ func (_NeoTokyoStaker *NeoTokyoStakerCallerSession) GetStakerPosition(_staker co
 
 // GetStakerPositions is a free data retrieval call binding the contract method 0x667a5154.
 //
-// Solidity: function getStakerPositions(address _staker) view returns(())
+// Solidity: function getStakerPositions(address _staker) view returns(((uint256,uint256,uint256,uint256,uint256,bool)[],(uint256,uint256,uint256,uint256)[],(uint256,uint256,uint256,uint256)))
 func (_NeoTokyoStaker *NeoTokyoStakerCaller) GetStakerPositions(opts *bind.CallOpts, _staker common.Address) (NeoTokyoStakerStakerPosition, error) {
 	var out []interface{}
 	err := _NeoTokyoStaker.contract.Call(opts, &out, "getStakerPositions", _staker)
@@ -858,14 +896,14 @@ func (_NeoTokyoStaker *NeoTokyoStakerCaller) GetStakerPositions(opts *bind.CallO
 
 // GetStakerPositions is a free data retrieval call binding the contract method 0x667a5154.
 //
-// Solidity: function getStakerPositions(address _staker) view returns(())
+// Solidity: function getStakerPositions(address _staker) view returns(((uint256,uint256,uint256,uint256,uint256,bool)[],(uint256,uint256,uint256,uint256)[],(uint256,uint256,uint256,uint256)))
 func (_NeoTokyoStaker *NeoTokyoStakerSession) GetStakerPositions(_staker common.Address) (NeoTokyoStakerStakerPosition, error) {
 	return _NeoTokyoStaker.Contract.GetStakerPositions(&_NeoTokyoStaker.CallOpts, _staker)
 }
 
 // GetStakerPositions is a free data retrieval call binding the contract method 0x667a5154.
 //
-// Solidity: function getStakerPositions(address _staker) view returns(())
+// Solidity: function getStakerPositions(address _staker) view returns(((uint256,uint256,uint256,uint256,uint256,bool)[],(uint256,uint256,uint256,uint256)[],(uint256,uint256,uint256,uint256)))
 func (_NeoTokyoStaker *NeoTokyoStakerCallerSession) GetStakerPositions(_staker common.Address) (NeoTokyoStakerStakerPosition, error) {
 	return _NeoTokyoStaker.Contract.GetStakerPositions(&_NeoTokyoStaker.CallOpts, _staker)
 }
@@ -1543,23 +1581,23 @@ func (_NeoTokyoStaker *NeoTokyoStakerTransactorSession) ConfigureLP(_lp common.A
 	return _NeoTokyoStaker.Contract.ConfigureLP(&_NeoTokyoStaker.TransactOpts, _lp)
 }
 
-// ConfigurePools is a paid mutator transaction binding the contract method 0xab540f4c.
+// ConfigurePools is a paid mutator transaction binding the contract method 0xc25409b5.
 //
-// Solidity: function configurePools(()[] _inputs) returns()
+// Solidity: function configurePools((uint8,uint256,(uint128,uint128)[])[] _inputs) returns()
 func (_NeoTokyoStaker *NeoTokyoStakerTransactor) ConfigurePools(opts *bind.TransactOpts, _inputs []NeoTokyoStakerPoolConfigurationInput) (*types.Transaction, error) {
 	return _NeoTokyoStaker.contract.Transact(opts, "configurePools", _inputs)
 }
 
-// ConfigurePools is a paid mutator transaction binding the contract method 0xab540f4c.
+// ConfigurePools is a paid mutator transaction binding the contract method 0xc25409b5.
 //
-// Solidity: function configurePools(()[] _inputs) returns()
+// Solidity: function configurePools((uint8,uint256,(uint128,uint128)[])[] _inputs) returns()
 func (_NeoTokyoStaker *NeoTokyoStakerSession) ConfigurePools(_inputs []NeoTokyoStakerPoolConfigurationInput) (*types.Transaction, error) {
 	return _NeoTokyoStaker.Contract.ConfigurePools(&_NeoTokyoStaker.TransactOpts, _inputs)
 }
 
-// ConfigurePools is a paid mutator transaction binding the contract method 0xab540f4c.
+// ConfigurePools is a paid mutator transaction binding the contract method 0xc25409b5.
 //
-// Solidity: function configurePools(()[] _inputs) returns()
+// Solidity: function configurePools((uint8,uint256,(uint128,uint128)[])[] _inputs) returns()
 func (_NeoTokyoStaker *NeoTokyoStakerTransactorSession) ConfigurePools(_inputs []NeoTokyoStakerPoolConfigurationInput) (*types.Transaction, error) {
 	return _NeoTokyoStaker.Contract.ConfigurePools(&_NeoTokyoStaker.TransactOpts, _inputs)
 }
@@ -1751,5 +1789,941 @@ func (_NeoTokyoStaker *NeoTokyoStakerSession) Withdraw(_assetType uint8, arg1 *b
 // Solidity: function withdraw(uint8 _assetType, uint256 ) returns()
 func (_NeoTokyoStaker *NeoTokyoStakerTransactorSession) Withdraw(_assetType uint8, arg1 *big.Int) (*types.Transaction, error) {
 	return _NeoTokyoStaker.Contract.Withdraw(&_NeoTokyoStaker.TransactOpts, _assetType, arg1)
+}
+
+// NeoTokyoStakerClaimIterator is returned from FilterClaim and is used to iterate over the raw logs and unpacked data for Claim events raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerClaimIterator struct {
+	Event *NeoTokyoStakerClaim // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *NeoTokyoStakerClaimIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(NeoTokyoStakerClaim)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(NeoTokyoStakerClaim)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *NeoTokyoStakerClaimIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *NeoTokyoStakerClaimIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// NeoTokyoStakerClaim represents a Claim event raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerClaim struct {
+	Recipient common.Address
+	Reward    *big.Int
+	Tax       *big.Int
+	Raw       types.Log // Blockchain specific contextual infos
+}
+
+// FilterClaim is a free log retrieval operation binding the contract event 0x34fcbac0073d7c3d388e51312faf357774904998eeb8fca628b9e6f65ee1cbf7.
+//
+// Solidity: event Claim(address indexed recipient, uint256 reward, uint256 tax)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) FilterClaim(opts *bind.FilterOpts, recipient []common.Address) (*NeoTokyoStakerClaimIterator, error) {
+
+	var recipientRule []interface{}
+	for _, recipientItem := range recipient {
+		recipientRule = append(recipientRule, recipientItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.FilterLogs(opts, "Claim", recipientRule)
+	if err != nil {
+		return nil, err
+	}
+	return &NeoTokyoStakerClaimIterator{contract: _NeoTokyoStaker.contract, event: "Claim", logs: logs, sub: sub}, nil
+}
+
+// WatchClaim is a free log subscription operation binding the contract event 0x34fcbac0073d7c3d388e51312faf357774904998eeb8fca628b9e6f65ee1cbf7.
+//
+// Solidity: event Claim(address indexed recipient, uint256 reward, uint256 tax)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) WatchClaim(opts *bind.WatchOpts, sink chan<- *NeoTokyoStakerClaim, recipient []common.Address) (event.Subscription, error) {
+
+	var recipientRule []interface{}
+	for _, recipientItem := range recipient {
+		recipientRule = append(recipientRule, recipientItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.WatchLogs(opts, "Claim", recipientRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(NeoTokyoStakerClaim)
+				if err := _NeoTokyoStaker.contract.UnpackLog(event, "Claim", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseClaim is a log parse operation binding the contract event 0x34fcbac0073d7c3d388e51312faf357774904998eeb8fca628b9e6f65ee1cbf7.
+//
+// Solidity: event Claim(address indexed recipient, uint256 reward, uint256 tax)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) ParseClaim(log types.Log) (*NeoTokyoStakerClaim, error) {
+	event := new(NeoTokyoStakerClaim)
+	if err := _NeoTokyoStaker.contract.UnpackLog(event, "Claim", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// NeoTokyoStakerManagementUpdatedIterator is returned from FilterManagementUpdated and is used to iterate over the raw logs and unpacked data for ManagementUpdated events raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerManagementUpdatedIterator struct {
+	Event *NeoTokyoStakerManagementUpdated // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *NeoTokyoStakerManagementUpdatedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(NeoTokyoStakerManagementUpdated)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(NeoTokyoStakerManagementUpdated)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *NeoTokyoStakerManagementUpdatedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *NeoTokyoStakerManagementUpdatedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// NeoTokyoStakerManagementUpdated represents a ManagementUpdated event raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerManagementUpdated struct {
+	Manager      common.Address
+	ManagedRight [32]byte
+	ManagerRight [32]byte
+	Raw          types.Log // Blockchain specific contextual infos
+}
+
+// FilterManagementUpdated is a free log retrieval operation binding the contract event 0xad26b90be8a18bd2262e914f6fd4919c42f9dd6a0d07a15fa728ec603a836a88.
+//
+// Solidity: event ManagementUpdated(address indexed manager, bytes32 indexed managedRight, bytes32 indexed managerRight)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) FilterManagementUpdated(opts *bind.FilterOpts, manager []common.Address, managedRight [][32]byte, managerRight [][32]byte) (*NeoTokyoStakerManagementUpdatedIterator, error) {
+
+	var managerRule []interface{}
+	for _, managerItem := range manager {
+		managerRule = append(managerRule, managerItem)
+	}
+	var managedRightRule []interface{}
+	for _, managedRightItem := range managedRight {
+		managedRightRule = append(managedRightRule, managedRightItem)
+	}
+	var managerRightRule []interface{}
+	for _, managerRightItem := range managerRight {
+		managerRightRule = append(managerRightRule, managerRightItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.FilterLogs(opts, "ManagementUpdated", managerRule, managedRightRule, managerRightRule)
+	if err != nil {
+		return nil, err
+	}
+	return &NeoTokyoStakerManagementUpdatedIterator{contract: _NeoTokyoStaker.contract, event: "ManagementUpdated", logs: logs, sub: sub}, nil
+}
+
+// WatchManagementUpdated is a free log subscription operation binding the contract event 0xad26b90be8a18bd2262e914f6fd4919c42f9dd6a0d07a15fa728ec603a836a88.
+//
+// Solidity: event ManagementUpdated(address indexed manager, bytes32 indexed managedRight, bytes32 indexed managerRight)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) WatchManagementUpdated(opts *bind.WatchOpts, sink chan<- *NeoTokyoStakerManagementUpdated, manager []common.Address, managedRight [][32]byte, managerRight [][32]byte) (event.Subscription, error) {
+
+	var managerRule []interface{}
+	for _, managerItem := range manager {
+		managerRule = append(managerRule, managerItem)
+	}
+	var managedRightRule []interface{}
+	for _, managedRightItem := range managedRight {
+		managedRightRule = append(managedRightRule, managedRightItem)
+	}
+	var managerRightRule []interface{}
+	for _, managerRightItem := range managerRight {
+		managerRightRule = append(managerRightRule, managerRightItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.WatchLogs(opts, "ManagementUpdated", managerRule, managedRightRule, managerRightRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(NeoTokyoStakerManagementUpdated)
+				if err := _NeoTokyoStaker.contract.UnpackLog(event, "ManagementUpdated", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseManagementUpdated is a log parse operation binding the contract event 0xad26b90be8a18bd2262e914f6fd4919c42f9dd6a0d07a15fa728ec603a836a88.
+//
+// Solidity: event ManagementUpdated(address indexed manager, bytes32 indexed managedRight, bytes32 indexed managerRight)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) ParseManagementUpdated(log types.Log) (*NeoTokyoStakerManagementUpdated, error) {
+	event := new(NeoTokyoStakerManagementUpdated)
+	if err := _NeoTokyoStaker.contract.UnpackLog(event, "ManagementUpdated", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// NeoTokyoStakerOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerOwnershipTransferredIterator struct {
+	Event *NeoTokyoStakerOwnershipTransferred // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *NeoTokyoStakerOwnershipTransferredIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(NeoTokyoStakerOwnershipTransferred)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(NeoTokyoStakerOwnershipTransferred)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *NeoTokyoStakerOwnershipTransferredIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *NeoTokyoStakerOwnershipTransferredIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// NeoTokyoStakerOwnershipTransferred represents a OwnershipTransferred event raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerOwnershipTransferred struct {
+	PreviousOwner common.Address
+	NewOwner      common.Address
+	Raw           types.Log // Blockchain specific contextual infos
+}
+
+// FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*NeoTokyoStakerOwnershipTransferredIterator, error) {
+
+	var previousOwnerRule []interface{}
+	for _, previousOwnerItem := range previousOwner {
+		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
+	}
+	var newOwnerRule []interface{}
+	for _, newOwnerItem := range newOwner {
+		newOwnerRule = append(newOwnerRule, newOwnerItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	if err != nil {
+		return nil, err
+	}
+	return &NeoTokyoStakerOwnershipTransferredIterator{contract: _NeoTokyoStaker.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+}
+
+// WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *NeoTokyoStakerOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+
+	var previousOwnerRule []interface{}
+	for _, previousOwnerItem := range previousOwner {
+		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
+	}
+	var newOwnerRule []interface{}
+	for _, newOwnerItem := range newOwner {
+		newOwnerRule = append(newOwnerRule, newOwnerItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(NeoTokyoStakerOwnershipTransferred)
+				if err := _NeoTokyoStaker.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseOwnershipTransferred is a log parse operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) ParseOwnershipTransferred(log types.Log) (*NeoTokyoStakerOwnershipTransferred, error) {
+	event := new(NeoTokyoStakerOwnershipTransferred)
+	if err := _NeoTokyoStaker.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// NeoTokyoStakerPermitUpdatedIterator is returned from FilterPermitUpdated and is used to iterate over the raw logs and unpacked data for PermitUpdated events raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerPermitUpdatedIterator struct {
+	Event *NeoTokyoStakerPermitUpdated // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *NeoTokyoStakerPermitUpdatedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(NeoTokyoStakerPermitUpdated)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(NeoTokyoStakerPermitUpdated)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *NeoTokyoStakerPermitUpdatedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *NeoTokyoStakerPermitUpdatedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// NeoTokyoStakerPermitUpdated represents a PermitUpdated event raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerPermitUpdated struct {
+	Updater        common.Address
+	Updatee        common.Address
+	Circumstance   [32]byte
+	Role           [32]byte
+	ExpirationTime *big.Int
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterPermitUpdated is a free log retrieval operation binding the contract event 0x71b8ef6d2e182fa6ca30442059cc10398330b3e0561fd4ecc7232b62a8678cb6.
+//
+// Solidity: event PermitUpdated(address indexed updater, address indexed updatee, bytes32 circumstance, bytes32 indexed role, uint256 expirationTime)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) FilterPermitUpdated(opts *bind.FilterOpts, updater []common.Address, updatee []common.Address, role [][32]byte) (*NeoTokyoStakerPermitUpdatedIterator, error) {
+
+	var updaterRule []interface{}
+	for _, updaterItem := range updater {
+		updaterRule = append(updaterRule, updaterItem)
+	}
+	var updateeRule []interface{}
+	for _, updateeItem := range updatee {
+		updateeRule = append(updateeRule, updateeItem)
+	}
+
+	var roleRule []interface{}
+	for _, roleItem := range role {
+		roleRule = append(roleRule, roleItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.FilterLogs(opts, "PermitUpdated", updaterRule, updateeRule, roleRule)
+	if err != nil {
+		return nil, err
+	}
+	return &NeoTokyoStakerPermitUpdatedIterator{contract: _NeoTokyoStaker.contract, event: "PermitUpdated", logs: logs, sub: sub}, nil
+}
+
+// WatchPermitUpdated is a free log subscription operation binding the contract event 0x71b8ef6d2e182fa6ca30442059cc10398330b3e0561fd4ecc7232b62a8678cb6.
+//
+// Solidity: event PermitUpdated(address indexed updater, address indexed updatee, bytes32 circumstance, bytes32 indexed role, uint256 expirationTime)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) WatchPermitUpdated(opts *bind.WatchOpts, sink chan<- *NeoTokyoStakerPermitUpdated, updater []common.Address, updatee []common.Address, role [][32]byte) (event.Subscription, error) {
+
+	var updaterRule []interface{}
+	for _, updaterItem := range updater {
+		updaterRule = append(updaterRule, updaterItem)
+	}
+	var updateeRule []interface{}
+	for _, updateeItem := range updatee {
+		updateeRule = append(updateeRule, updateeItem)
+	}
+
+	var roleRule []interface{}
+	for _, roleItem := range role {
+		roleRule = append(roleRule, roleItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.WatchLogs(opts, "PermitUpdated", updaterRule, updateeRule, roleRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(NeoTokyoStakerPermitUpdated)
+				if err := _NeoTokyoStaker.contract.UnpackLog(event, "PermitUpdated", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParsePermitUpdated is a log parse operation binding the contract event 0x71b8ef6d2e182fa6ca30442059cc10398330b3e0561fd4ecc7232b62a8678cb6.
+//
+// Solidity: event PermitUpdated(address indexed updater, address indexed updatee, bytes32 circumstance, bytes32 indexed role, uint256 expirationTime)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) ParsePermitUpdated(log types.Log) (*NeoTokyoStakerPermitUpdated, error) {
+	event := new(NeoTokyoStakerPermitUpdated)
+	if err := _NeoTokyoStaker.contract.UnpackLog(event, "PermitUpdated", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// NeoTokyoStakerStakeIterator is returned from FilterStake and is used to iterate over the raw logs and unpacked data for Stake events raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerStakeIterator struct {
+	Event *NeoTokyoStakerStake // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *NeoTokyoStakerStakeIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(NeoTokyoStakerStake)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(NeoTokyoStakerStake)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *NeoTokyoStakerStakeIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *NeoTokyoStakerStakeIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// NeoTokyoStakerStake represents a Stake event raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerStake struct {
+	Staker          common.Address
+	Asset           common.Address
+	TimelockOption  *big.Int
+	AmountOrTokenId *big.Int
+	Raw             types.Log // Blockchain specific contextual infos
+}
+
+// FilterStake is a free log retrieval operation binding the contract event 0x63602d0ecc7b3a0ef7ff1a116e23056662d64280355ba8031b6d0d767c4b4458.
+//
+// Solidity: event Stake(address indexed staker, address indexed asset, uint256 timelockOption, uint256 amountOrTokenId)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) FilterStake(opts *bind.FilterOpts, staker []common.Address, asset []common.Address) (*NeoTokyoStakerStakeIterator, error) {
+
+	var stakerRule []interface{}
+	for _, stakerItem := range staker {
+		stakerRule = append(stakerRule, stakerItem)
+	}
+	var assetRule []interface{}
+	for _, assetItem := range asset {
+		assetRule = append(assetRule, assetItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.FilterLogs(opts, "Stake", stakerRule, assetRule)
+	if err != nil {
+		return nil, err
+	}
+	return &NeoTokyoStakerStakeIterator{contract: _NeoTokyoStaker.contract, event: "Stake", logs: logs, sub: sub}, nil
+}
+
+// WatchStake is a free log subscription operation binding the contract event 0x63602d0ecc7b3a0ef7ff1a116e23056662d64280355ba8031b6d0d767c4b4458.
+//
+// Solidity: event Stake(address indexed staker, address indexed asset, uint256 timelockOption, uint256 amountOrTokenId)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) WatchStake(opts *bind.WatchOpts, sink chan<- *NeoTokyoStakerStake, staker []common.Address, asset []common.Address) (event.Subscription, error) {
+
+	var stakerRule []interface{}
+	for _, stakerItem := range staker {
+		stakerRule = append(stakerRule, stakerItem)
+	}
+	var assetRule []interface{}
+	for _, assetItem := range asset {
+		assetRule = append(assetRule, assetItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.WatchLogs(opts, "Stake", stakerRule, assetRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(NeoTokyoStakerStake)
+				if err := _NeoTokyoStaker.contract.UnpackLog(event, "Stake", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseStake is a log parse operation binding the contract event 0x63602d0ecc7b3a0ef7ff1a116e23056662d64280355ba8031b6d0d767c4b4458.
+//
+// Solidity: event Stake(address indexed staker, address indexed asset, uint256 timelockOption, uint256 amountOrTokenId)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) ParseStake(log types.Log) (*NeoTokyoStakerStake, error) {
+	event := new(NeoTokyoStakerStake)
+	if err := _NeoTokyoStaker.contract.UnpackLog(event, "Stake", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// NeoTokyoStakerWithdrawIterator is returned from FilterWithdraw and is used to iterate over the raw logs and unpacked data for Withdraw events raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerWithdrawIterator struct {
+	Event *NeoTokyoStakerWithdraw // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *NeoTokyoStakerWithdrawIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(NeoTokyoStakerWithdraw)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(NeoTokyoStakerWithdraw)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *NeoTokyoStakerWithdrawIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *NeoTokyoStakerWithdrawIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// NeoTokyoStakerWithdraw represents a Withdraw event raised by the NeoTokyoStaker contract.
+type NeoTokyoStakerWithdraw struct {
+	Caller          common.Address
+	Asset           common.Address
+	AmountOrTokenId *big.Int
+	Raw             types.Log // Blockchain specific contextual infos
+}
+
+// FilterWithdraw is a free log retrieval operation binding the contract event 0x9b1bfa7fa9ee420a16e124f794c35ac9f90472acc99140eb2f6447c714cad8eb.
+//
+// Solidity: event Withdraw(address indexed caller, address indexed asset, uint256 amountOrTokenId)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) FilterWithdraw(opts *bind.FilterOpts, caller []common.Address, asset []common.Address) (*NeoTokyoStakerWithdrawIterator, error) {
+
+	var callerRule []interface{}
+	for _, callerItem := range caller {
+		callerRule = append(callerRule, callerItem)
+	}
+	var assetRule []interface{}
+	for _, assetItem := range asset {
+		assetRule = append(assetRule, assetItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.FilterLogs(opts, "Withdraw", callerRule, assetRule)
+	if err != nil {
+		return nil, err
+	}
+	return &NeoTokyoStakerWithdrawIterator{contract: _NeoTokyoStaker.contract, event: "Withdraw", logs: logs, sub: sub}, nil
+}
+
+// WatchWithdraw is a free log subscription operation binding the contract event 0x9b1bfa7fa9ee420a16e124f794c35ac9f90472acc99140eb2f6447c714cad8eb.
+//
+// Solidity: event Withdraw(address indexed caller, address indexed asset, uint256 amountOrTokenId)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) WatchWithdraw(opts *bind.WatchOpts, sink chan<- *NeoTokyoStakerWithdraw, caller []common.Address, asset []common.Address) (event.Subscription, error) {
+
+	var callerRule []interface{}
+	for _, callerItem := range caller {
+		callerRule = append(callerRule, callerItem)
+	}
+	var assetRule []interface{}
+	for _, assetItem := range asset {
+		assetRule = append(assetRule, assetItem)
+	}
+
+	logs, sub, err := _NeoTokyoStaker.contract.WatchLogs(opts, "Withdraw", callerRule, assetRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(NeoTokyoStakerWithdraw)
+				if err := _NeoTokyoStaker.contract.UnpackLog(event, "Withdraw", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseWithdraw is a log parse operation binding the contract event 0x9b1bfa7fa9ee420a16e124f794c35ac9f90472acc99140eb2f6447c714cad8eb.
+//
+// Solidity: event Withdraw(address indexed caller, address indexed asset, uint256 amountOrTokenId)
+func (_NeoTokyoStaker *NeoTokyoStakerFilterer) ParseWithdraw(log types.Log) (*NeoTokyoStakerWithdraw, error) {
+	event := new(NeoTokyoStakerWithdraw)
+	if err := _NeoTokyoStaker.contract.UnpackLog(event, "Withdraw", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
 }
 
