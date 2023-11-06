@@ -1,0 +1,6 @@
+bytes
+*.o
+*.s
+*.json
+!abi/*.json
+!tests/abifix_test.abi.json
