@@ -17,7 +17,7 @@ go test
 
 ### Commands
 
-##### abifix
+#### abifix
 Description: 
 
 Used to generate proper ABI (application binary interface) files for the Solidity compiler tool, solc. It removes
@@ -29,7 +29,7 @@ Usage:
 ./bytes abifix [file]
 ```
 
-##### http
+#### http
 Description: 
 
 Starts the backend REST API server. The server can be configured through environment variables, or through an optional `.env` file. There is an example env file provided at `.env.example` 
