@@ -1,4 +1,4 @@
-package tests
+package price
 
 import (
 	"math/big"
