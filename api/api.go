@@ -3,6 +3,7 @@ package api
 import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,9 +23,12 @@ func (s *Server) Run(addr ...string) error {
 func NewServer(rpcClient *ethclient.Client) *Server {
 	engine := gin.Default()
 
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowAllOrigins = true
+	engine.Use(cors.New(corsConfig))
 	routesHandler := NewRoutes(rpcClient)
 
-	v1Group := engine.Group("/api/v1")
+	v1Group := engine.Group("/v1/api")
 	{
 		v1Group.GET("/price", routesHandler.Price)
 		v1Group.GET("/wallet/:address", routesHandler.Wallet)
