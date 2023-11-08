@@ -1,4 +1,5 @@
 import { Citizen, Wallet } from "@/types/Wallet";
+import Image from "next/image";
 
 
 export default function WalletComponent({address, tokenBalance, totalStake, pendingRewards, stakedCitizens}: Wallet) {
@@ -16,7 +17,7 @@ export default function WalletComponent({address, tokenBalance, totalStake, pend
               stakedCitizens.map(citizen => {
                 console.log("citizen")
                 return (
-                    <CitizenComponent id={citizen.id} image={citizen.image} season={citizen.season}/>
+                    <CitizenComponent id={citizen.id} image={citizen.image} season={citizen.season} key={citizen.id}/>
                 )
               })
             }
@@ -28,7 +29,7 @@ export default function WalletComponent({address, tokenBalance, totalStake, pend
 function CitizenComponent({image, id, season}: Citizen) {
     return (
         <div>
-            <img src={image} height={100} width={100}></img>
+            <Image src={image} width={100} height={100} alt=""/>
             <span>Season: {season}, ID: {id}</span>
         </div>
     )
