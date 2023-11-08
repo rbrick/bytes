@@ -1,4 +1,4 @@
-## bytes.onl [![Go](https://github.com/rbrick/bytes/actions/workflows/go.yml/badge.svg)](https://github.com/rbrick/bytes/actions/workflows/go.yml)
+## bytes.onl [![Go](https://github.com/rbrick/bytes/actions/workflows/go.yml/badge.svg)](https://github.com/rbrick/bytes/actions/workflows/go.yml) [![Node.js CI](https://github.com/rbrick/bytes/actions/workflows/node.js.yml/badge.svg)](https://github.com/rbrick/bytes/actions/workflows/node.js.yml)
 ---
 > Backend API for aggregating price data for ERC20 tokens
 ---
