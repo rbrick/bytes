@@ -21,7 +21,7 @@ export class Wallet {
 
     constructor(address: string, jsonObject: any) {
          this.address = address;
-         this.tokenBalance = jsonObject.tokenBalance;
+         this.tokenBalance = jsonObject.balance;
          this.totalStake = jsonObject.totalStake;
          this.pendingRewards = jsonObject.pendingRewards;
 

@@ -6,19 +6,35 @@ import { env } from "process";
 import Bytes from "@/components/Bytes";
 import { useEffect, useState } from "react";
 import { BytesPrice } from "@/types/Bytes";
+import { Wallet } from "@/types/Wallet";
+import WalletComponent from "@/components/Wallet";
 
 function fetchPrice(): Promise<BytesPrice> {
   return new Promise<BytesPrice>((resolve, reject) => {
     fetch(`http://localhost:1337/v1/api/price`, {
       method: "GET",
     }).then((response) => {
-      // response.text().then((text) => {
-      //     console.log(text)
-      // })
       response
         .json()
         .then((jsonObj) => {
           resolve(new BytesPrice(jsonObj.etherPrice, jsonObj.usdPrice));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  });
+}
+
+function fetchWallet(address: string): Promise<Wallet> {
+  return new Promise<Wallet>((resolve, reject) => {
+    fetch(`http://localhost:1337/v1/api/wallet/${address}`, {
+      method: "GET",
+    }).then((response) => {
+      response
+        .json()
+        .then((jsonObj) => {
+          resolve(new Wallet(address, jsonObj));
         })
         .catch((err) => {
           console.log(err);
@@ -36,22 +52,34 @@ export default function Home() {
   const [displayWallet, setDisplayWallet] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
   const [error, setError] = useState("");
+  const [fetchedWallet, setFetchedWallet] = useState({} as Wallet);
 
   function onInputChange(text: string) {
     setWalletAddress(text);
+
+    setDisplayWallet(false);
   }
 
   function onClick() {
     if (!ADDRESS_PATTERN.test(walletAddress)) {
-        // console.log(walletAddress)
-        setError("invalid address");
-        return
+      // console.log(walletAddress)
+      setError("invalid address");
+      return;
     } else {
-        console.log("valid")
-        setDisplayWallet(true);
-        setError("");
+      setDisplayWallet(true);
+      setError("");
     }
   }
+
+  useEffect(() => {
+    if (displayWallet) {
+        fetchWallet(walletAddress).then((wallet) => {
+            console.log("calling")
+          setFetchedWallet(wallet);
+        });
+    }
+
+  }, [displayWallet]);
 
   useEffect(() => {
     if (!ignoreRemount) {
@@ -76,15 +104,27 @@ export default function Home() {
     <main>
       {error.length > 0}
       <div>
-        <span style={{color: 'red'}}>{error}</span>
+        <span style={{ color: "red" }}>{error}</span>
       </div>
 
       <Bytes
         priceEther={bytesPrice.priceEther}
         priceUSD={bytesPrice.priceUSD}
       />
-      <input type="text" onChange={(e) => onInputChange(e.target.value)} id="walletAddress"></input>
+      <input
+        type="text"
+        onChange={(e) => onInputChange(e.target.value)}
+        id="walletAddress"
+      ></input>
       <button onClick={onClick}>View Wallet</button>
+
+      {displayWallet && (    <WalletComponent
+        address={walletAddress}
+        pendingRewards={fetchedWallet.pendingRewards}
+        tokenBalance={fetchedWallet.tokenBalance}
+        totalStake={fetchedWallet.totalStake}
+        stakedCitizens={fetchedWallet.stakedCitizens}
+      />)}
     </main>
   );
 }

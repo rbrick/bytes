@@ -1,16 +1,35 @@
 import { Citizen, Wallet } from "@/types/Wallet";
 
 
-export default function WalletComponent({address, tokenBalance, totalStake, pendingRewards}: Wallet) {
+export default function WalletComponent({address, tokenBalance, totalStake, pendingRewards, stakedCitizens}: Wallet) {
+   
+    console.log("wtf", tokenBalance)
     return (
         <div>
-            <span>Address: {address}</span>
-            <span>Balance: {tokenBalance}</span>
-            <span>Total Stake: {totalStake}</span>
-            <span>Pending Rewards: {pendingRewards}</span>
+            <span>Address: {address}</span><br/>
+            <span>Balance: {tokenBalance}</span><br/>
+            <span>Total Stake: {totalStake}</span><br/>
+            <span>Pending Rewards: {pendingRewards}</span><br/>
+
+            { 
+             stakedCitizens &&
+              stakedCitizens.map(citizen => {
+                console.log("citizen")
+                return (
+                    <CitizenComponent id={citizen.id} image={citizen.image} season={citizen.season}/>
+                )
+              })
+            }
         </div>
     );
 
 }
 
-function CitizenComponent({}: Citizen) {}
+function CitizenComponent({image, id, season}: Citizen) {
+    return (
+        <div>
+            <img src={image} height={100} width={100}></img>
+            <span>Season: {season}, ID: {id}</span>
+        </div>
+    )
+}
