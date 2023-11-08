@@ -5,3 +5,7 @@ bytes
 !abi/*.json
 !tests/abifix_test.abi.json
 .env
+!frontend/package.json
+!frontend/package-lock.json
+!frontend/tsconfig.json
+!frontend/.eslintrc.json

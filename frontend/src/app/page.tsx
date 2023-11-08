@@ -74,7 +74,6 @@ export default function Home() {
   useEffect(() => {
     if (displayWallet) {
         fetchWallet(walletAddress).then((wallet) => {
-            console.log("calling")
           setFetchedWallet(wallet);
         });
     }
@@ -118,7 +117,7 @@ export default function Home() {
       ></input>
       <button onClick={onClick}>View Wallet</button>
 
-      {displayWallet && (    <WalletComponent
+      {displayWallet && (<WalletComponent
         address={walletAddress}
         pendingRewards={fetchedWallet.pendingRewards}
         tokenBalance={fetchedWallet.tokenBalance}
