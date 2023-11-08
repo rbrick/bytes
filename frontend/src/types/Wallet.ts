@@ -16,7 +16,7 @@ export class Wallet {
     tokenBalance: string;
     totalStake: string;
     pendingRewards: string;
-    stakedCitizens: Citizen[];
+    stakedCitizens: Citizen[] = [];
 
 
     constructor(address: string, jsonObject: any) {
@@ -25,11 +25,12 @@ export class Wallet {
          this.totalStake = jsonObject.totalStake;
          this.pendingRewards = jsonObject.pendingRewards;
 
-         let stakedCitizens: any[] = jsonObject.stakedCitizens;
-         this.stakedCitizens = stakedCitizens.map( (val) => {
-            return new Citizen(val);
-         });
-
+         if (jsonObject.stakedCitizens) {
+            let stakedCitizens: any[] = jsonObject.stakedCitizens;
+            this.stakedCitizens = stakedCitizens.map( (val) => {
+               return new Citizen(val);
+            });
+         }
     }
 }
 
