@@ -8,6 +8,17 @@ import { useEffect, useState } from "react";
 import { BytesPrice } from "@/types/Bytes";
 import { Wallet } from "@/types/Wallet";
 import WalletComponent from "@/components/Wallet";
+import React from "react";
+import {
+  Alert,
+  AlertHeading,
+  Button,
+  Col,
+  Container,
+  FormControl,
+  InputGroup,
+  Row,
+} from "react-bootstrap";
 
 function fetchPrice(): Promise<BytesPrice> {
   return new Promise<BytesPrice>((resolve, reject) => {
@@ -61,6 +72,7 @@ export default function Home() {
   }
 
   function onClick() {
+    console.log(walletAddress);
     if (!ADDRESS_PATTERN.test(walletAddress)) {
       // console.log(walletAddress)
       setError("invalid address");
@@ -73,11 +85,10 @@ export default function Home() {
 
   useEffect(() => {
     if (displayWallet) {
-        fetchWallet(walletAddress).then((wallet) => {
-          setFetchedWallet(wallet);
-        });
+      fetchWallet(walletAddress).then((wallet) => {
+        setFetchedWallet(wallet);
+      });
     }
-
   }, [displayWallet]);
 
   useEffect(() => {
@@ -101,29 +112,40 @@ export default function Home() {
 
   return (
     <main>
-      {error.length > 0}
-      <div>
-        <span style={{ color: "red" }}>{error}</span>
-      </div>
+  
+      <Container>
+        <Row>
+          <h1 style={{textAlign:"center"}}>bytes.onl</h1>
+        </Row>
+        <Row>
+          <Col sm={3}>
+            <Bytes
+              priceEther={bytesPrice.formattedEther}
+              priceUSD={bytesPrice.formattedUSD}
+            />
+          </Col>
 
-      <Bytes
-        priceEther={bytesPrice.priceEther}
-        priceUSD={bytesPrice.priceUSD}
-      />
-      <input
-        type="text"
-        onChange={(e) => onInputChange(e.target.value)}
-        id="walletAddress"
-      ></input>
-      <button onClick={onClick}>View Wallet</button>
+          <Col md={6}>
+            {error.length > 0 && (
+              <Alert dismissible variant="danger" onClose={() => setError("")}>
+                {error}
+              </Alert>
+            )}
 
-      {displayWallet && (<WalletComponent
-        address={walletAddress}
-        pendingRewards={fetchedWallet.pendingRewards}
-        tokenBalance={fetchedWallet.tokenBalance}
-        totalStake={fetchedWallet.totalStake}
-        stakedCitizens={fetchedWallet.stakedCitizens}
-      />)}
+            <InputGroup>
+              <FormControl
+                placeholder="0x..."
+                onChange={(event) => onInputChange(event.currentTarget.value)}
+              ></FormControl>
+              <Button onClick={onClick}>View</Button>
+            </InputGroup>
+            <br />
+            {displayWallet && (
+              WalletComponent(fetchedWallet, bytesPrice.priceUSD)
+            )}
+          </Col>
+        </Row>
+      </Container>
     </main>
   );
 }

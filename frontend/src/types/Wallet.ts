@@ -18,7 +18,6 @@ export class Wallet {
     pendingRewards: string;
     stakedCitizens: Citizen[] = [];
 
-
     constructor(address: string, jsonObject: any) {
          this.address = address;
          this.tokenBalance = jsonObject.balance;

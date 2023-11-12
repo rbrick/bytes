@@ -5,10 +5,23 @@ import { BytesPrice } from "@/types/Bytes";
 
 
 
-export default function Bytes({priceEther, priceUSD}: BytesPrice) {
+
+
+
+interface BytesPriceDisplayProps {
+    priceEther: string
+    priceUSD: string
+}
+
+export default function Bytes({priceEther, priceUSD}: BytesPriceDisplayProps) {
     return (
-        <div>
-            <span>Bytes Price: {priceEther} Ξ / ${priceUSD}</span>
+        <div className="card">
+            <div className="card-header">
+                 Price
+            </div>
+            <div className="card-body">
+                <h5 className="card-title">${priceUSD} / {priceEther} Ξ</h5>
+            </div>
         </div>
     )
 } 

@@ -1,16 +1,22 @@
-// interface  {
-//     priceEther: string
-//     priceUSD: string
-// }
+
+
 
 export class BytesPrice {
-    priceEther: string;
-    priceUSD: string;
+
+    
+    priceEther: number;
+    priceUSD: number;
+
+    formattedEther: string;
+    formattedUSD: string;
   
   
     constructor(priceEther: string, priceUSD: string) {
-        this.priceEther = priceEther;
-        this.priceUSD = priceUSD;
+        this.priceEther = Number.parseFloat(priceEther);
+        this.priceUSD = Number.parseFloat(priceUSD);
+
+        this.formattedEther = this.priceEther.toFixed(5);
+        this.formattedUSD = this.priceUSD.toFixed(2);
     }
   }
   
