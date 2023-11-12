@@ -89,7 +89,7 @@ export default function Home() {
         setFetchedWallet(wallet);
       });
     }
-  }, [displayWallet]);
+  }, [displayWallet, walletAddress]);
 
   useEffect(() => {
     if (!ignoreRemount) {
@@ -112,10 +112,9 @@ export default function Home() {
 
   return (
     <main>
-  
       <Container>
         <Row>
-          <h1 style={{textAlign:"center"}}>bytes.onl</h1>
+          <h1 style={{ textAlign: "center" }}>bytes.onl</h1>
         </Row>
         <Row>
           <Col sm={3}>
@@ -123,6 +122,15 @@ export default function Home() {
               priceEther={bytesPrice.formattedEther}
               priceUSD={bytesPrice.formattedUSD}
             />
+            <span>
+              <a href="https://raw.githubusercontent.com/rbrick/bytes/main/CHANGELOG.md">
+                Changelog 
+              </a>
+              &nbsp;
+              <a href="#">
+                  Roadmap
+              </a>
+            </span>
           </Col>
 
           <Col md={6}>
@@ -140,9 +148,8 @@ export default function Home() {
               <Button onClick={onClick}>View</Button>
             </InputGroup>
             <br />
-            {displayWallet && (
-              WalletComponent(fetchedWallet, bytesPrice.priceUSD)
-            )}
+            {displayWallet &&
+              WalletComponent(fetchedWallet, bytesPrice.priceUSD)}
           </Col>
         </Row>
       </Container>
