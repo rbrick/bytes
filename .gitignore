@@ -9,3 +9,4 @@ bytes
 !frontend/package-lock.json
 !frontend/tsconfig.json
 !frontend/.eslintrc.json
+.DS_Store

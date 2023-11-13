@@ -1,5 +1,6 @@
 import { Citizen, Wallet } from "@/types/Wallet";
 import Image from "next/image";
+import React, { Component, ReactNode } from "react";
 import {
   Card,
   CardBody,
@@ -7,6 +8,7 @@ import {
   CardText,
   CardTitle,
   Col,
+  Container,
   Row,
 } from "react-bootstrap";
 
@@ -19,7 +21,7 @@ export default function WalletComponent(
   let pendingRewardsNum = Number.parseFloat(pendingRewards);
   let rewardUSDValue = pendingRewardsNum * priceUSD;
   return (
-    <>
+    <Container fluid>
       <Card>
         <CardHeader>Summary</CardHeader>
         <CardBody>
@@ -40,46 +42,58 @@ export default function WalletComponent(
             </span>
           </CardText>
 
-          {stakedCitizens &&
-            stakedCitizens.map((citizen) => {
-              return (
-                <CitizenComponent
-                  id={citizen.id}
-                  image={citizen.image}
-                  season={citizen.season}
-                  key={citizen.id}
-                />
-              );
-            })}
+          <CardTitle>Staked Citizens</CardTitle>
+          {stakedCitizens && CitizenComponent(stakedCitizens)}
         </CardBody>
       </Card>
-    </>
+    </Container>
   );
 }
 
-function CitizenComponent({ image, id, season }: Citizen) {
-  return (
-    <Card style={{ maxWidth: 200, maxHeight: 150 }}>
-      <Row className="g-0">
-        <Col xs={4}>
-          <Image
-            src={image}
-            className="img-fluid rounded-start"
-            width={100}
-            height={100}
-            alt=""
-          />
-        </Col>
-        <Col xs={8}>
-          <CardBody>
-            <CardTitle>ID: {id}</CardTitle>
-          </CardBody>
-        </Col>
-      </Row>
-    </Card>
-    // <div>
-    //     <Image src={image} width={100} height={100} alt=""/>
-    //     <span>Season: {season}, ID: {id}</span>
-    // </div>
-  );
+function CitizenComponent(citizens: Citizen[]) {
+  let array = [];
+
+  for (let i = 0; i < (citizens.length / 2) + citizens.length % 2; i++) {
+   let subArray = citizens.slice((i * 2), (i + 1) * 2);
+
+   console.log(subArray.length);
+   let cards = subArray.map((citizen, index) => {
+      return (
+        <Card style={{ maxWidth: 200, maxHeight: 150, margin: 2 }} key={citizen.id}>
+        <Row className="g-0">
+          <Col xs={4}>
+            <Image
+              src={citizen.image}
+              className="img-fluid rounded-start"
+              width={100}
+              height={100}
+              alt=""
+            />
+          </Col>
+          <Col xs={8}>
+            <CardBody>
+              <CardTitle>ID: {citizen.id}</CardTitle>
+            </CardBody>
+          </Col>
+        </Row>
+      </Card>
+      )
+    });
+
+
+    console.log("card length", cards.length)
+
+
+    array.push( (
+      <>
+      
+        <Row className="g-0 no-gutters">
+        {cards}
+        </Row>
+      </>
+       
+    ) );
+  }
+
+  return array
 }
