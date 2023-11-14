@@ -19,10 +19,15 @@ import {
   InputGroup,
   Row,
 } from "react-bootstrap";
+// import getConfig from 'next/config';
+
+// const { publicRuntimeConfig } = getConfig();
+
+
 
 function fetchPrice(): Promise<BytesPrice> {
   return new Promise<BytesPrice>((resolve, reject) => {
-    fetch(`${process.env.NEXT_API_URL}/v1/api/price`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/api/price`, {
       method: "GET",
     }).then((response) => {
       response
@@ -39,7 +44,7 @@ function fetchPrice(): Promise<BytesPrice> {
 
 function fetchWallet(address: string): Promise<Wallet> {
   return new Promise<Wallet>((resolve, reject) => {
-    fetch(`${process.env.NEXT_API_URL}/v1/api/wallet/${address}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/api/wallet/${address}`, {
       method: "GET",
     }).then((response) => {
       response
