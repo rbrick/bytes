@@ -14,6 +14,6 @@ jobs:
     - name: Build frontend container
       run: docker build ./frontend --file ./frontend/Dockerfile --tag bytes-frontend:$(date +%s)
     - name: Push backend container
-      run: docker push ghcr.io/rbrick/bytes-backend:latest
+      run: docker push ghcr.io/rbrick/bytes-backend:$(date +%s)
     - name: Push frontend
-      run: docker push ghcr.io/rbrick/bytes-frontend:latest
+      run: docker push ghcr.io/rbrick/bytes-frontend:$(date +%s)
