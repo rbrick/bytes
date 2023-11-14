@@ -22,7 +22,7 @@ import {
 
 function fetchPrice(): Promise<BytesPrice> {
   return new Promise<BytesPrice>((resolve, reject) => {
-    fetch(`http://localhost:1337/v1/api/price`, {
+    fetch(`${process.env.NEXT_API_URL}/v1/api/price`, {
       method: "GET",
     }).then((response) => {
       response
@@ -39,7 +39,7 @@ function fetchPrice(): Promise<BytesPrice> {
 
 function fetchWallet(address: string): Promise<Wallet> {
   return new Promise<Wallet>((resolve, reject) => {
-    fetch(`http://localhost:1337/v1/api/wallet/${address}`, {
+    fetch(`${process.env.NEXT_API_URL}/v1/api/wallet/${address}`, {
       method: "GET",
     }).then((response) => {
       response
