@@ -122,6 +122,7 @@ export default function Home() {
               priceEther={bytesPrice.formattedEther}
               priceUSD={bytesPrice.formattedUSD}
             />
+            &nbsp;&nbsp;
             <span>
               <a href="https://raw.githubusercontent.com/rbrick/bytes/main/CHANGELOG.md">
                 Changelog 
@@ -130,6 +131,11 @@ export default function Home() {
               <a href="#">
                   Roadmap
               </a>
+
+
+           &nbsp;
+           rev-v0.0.1
+            &nbsp;
             </span>
           </Col>
 
