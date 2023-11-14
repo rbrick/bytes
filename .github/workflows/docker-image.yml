@@ -16,9 +16,9 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/checkout@v3
     - name: Build backend container
-      run: docker build . --file Dockerfile --tag bytes-backend:$(date +%s) && docker tag bytes-backend:$(date +%s) https://ghcr.io/rbrick/bytes-backend:latest
+      run: docker build . --file Dockerfile --tag bytes-backend:$(date +%s) && docker tag bytes-backend:$(date +%s) ghcr.io/rbrick/bytes-backend:latest
     - name: Build frontend container
-      run: docker build ./frontend --file ./frontend/Dockerfile --tag bytes-frontend:$(date +%s) && docker tag bytes-frontend:$(date +%s) https://ghcr.io/rbrick/bytes-frontend:latest
+      run: docker build ./frontend --file ./frontend/Dockerfile --tag bytes-frontend:$(date +%s) && docker tag bytes-frontend:$(date +%s) ghcr.io/rbrick/bytes-frontend:latest
     - name: Push backend container
       run: docker push ghcr.io/rbrick/bytes-backend:latest
     - name: Push frontend
