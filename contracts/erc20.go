@@ -30,9 +30,10 @@ var (
 
 // ERC20MetaData contains all meta data concerning the ERC20 contract.
 var ERC20MetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 	Sigs: map[string]string{
 		"70a08231": "balanceOf(address)",
+		"18160ddd": "totalSupply()",
 	},
 }
 
@@ -216,3 +217,35 @@ func (_ERC20 *ERC20Session) BalanceOf(arg0 common.Address) (*big.Int, error) {
 func (_ERC20 *ERC20CallerSession) BalanceOf(arg0 common.Address) (*big.Int, error) {
 	return _ERC20.Contract.BalanceOf(&_ERC20.CallOpts, arg0)
 }
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() view returns(uint256)
+func (_ERC20 *ERC20Caller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _ERC20.contract.Call(opts, &out, "totalSupply")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() view returns(uint256)
+func (_ERC20 *ERC20Session) TotalSupply() (*big.Int, error) {
+	return _ERC20.Contract.TotalSupply(&_ERC20.CallOpts)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() view returns(uint256)
+func (_ERC20 *ERC20CallerSession) TotalSupply() (*big.Int, error) {
+	return _ERC20.Contract.TotalSupply(&_ERC20.CallOpts)
+}
+

@@ -25,3 +25,9 @@ type Citizen struct {
 	// The image for this citizen
 	Image string `json:"image"`
 }
+
+type MarketStats struct {
+	Price       Prices `json:"prices"`
+	TotalSupply string `json:"totalSupply"`
+	MarketCap   string `json:"marketCap"`
+}

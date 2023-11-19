@@ -33,7 +33,7 @@ function fetchPrice(): Promise<BytesPrice> {
       response
         .json()
         .then((jsonObj) => {
-          resolve(new BytesPrice(jsonObj.etherPrice, jsonObj.usdPrice));
+          resolve(new BytesPrice(jsonObj.prices.etherPrice, jsonObj.prices.usdPrice));
         })
         .catch((err) => {
           console.log(err);

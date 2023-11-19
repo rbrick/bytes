@@ -30,7 +30,7 @@ func NewServer(rpcClient *ethclient.Client) *Server {
 
 	v1Group := engine.Group("/v1/api")
 	{
-		v1Group.GET("/price", routesHandler.Price)
+		v1Group.GET("/price", routesHandler.MarketStats)
 		v1Group.GET("/wallet/:address", routesHandler.Wallet)
 	}
 
