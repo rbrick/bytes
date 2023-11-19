@@ -33,7 +33,7 @@ function fetchPrice(): Promise<BytesPrice> {
       response
         .json()
         .then((jsonObj) => {
-          resolve(new BytesPrice(jsonObj.prices.etherPrice, jsonObj.prices.usdPrice));
+          resolve(new BytesPrice(jsonObj.prices.etherPrice, jsonObj.prices.usdPrice, jsonObj.marketCap, jsonObj.totalSupply));
         })
         .catch((err) => {
           console.log(err);
@@ -64,7 +64,7 @@ let ignoreRemount = false;
 const ADDRESS_PATTERN = /^0x([a-fA-F0-9]){40}$/;
 
 export default function Home() {
-  const [bytesPrice, setBytesPrice] = useState(new BytesPrice("0.00", "0.00"));
+  const [bytesPrice, setBytesPrice] = useState(new BytesPrice("0.00", "0.00", "0.00", "0"));
   const [displayWallet, setDisplayWallet] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
   const [error, setError] = useState("");
@@ -77,7 +77,6 @@ export default function Home() {
   }
 
   function onClick() {
-    console.log(walletAddress);
     if (!ADDRESS_PATTERN.test(walletAddress)) {
       // console.log(walletAddress)
       setError("invalid address");
@@ -126,6 +125,8 @@ export default function Home() {
             <Bytes
               priceEther={bytesPrice.formattedEther}
               priceUSD={bytesPrice.formattedUSD}
+              marketCap={bytesPrice.marketCap}
+              totalSupply={bytesPrice.totalSupply}
             />
             &nbsp;&nbsp;
             <span>
@@ -139,7 +140,7 @@ export default function Home() {
 
 
            &nbsp;
-           rev-v0.0.1
+           rel-v0.0.2
             &nbsp;
             </span>
           </Col>

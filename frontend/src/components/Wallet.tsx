@@ -12,6 +12,12 @@ import {
   Row,
 } from "react-bootstrap";
 
+
+
+
+let currencyFormatter = new Intl.NumberFormat('en-US', {currency: 'USD', style: 'currency'});
+
+
 export default function WalletComponent(
   { address, tokenBalance, totalStake, pendingRewards, stakedCitizens }: Wallet,
   priceUSD: number
@@ -33,12 +39,12 @@ export default function WalletComponent(
             <br />
             Total Stake:{" "}
             <span style={{ fontWeight: "lighter" }}>
-              {totalStakeNum.toFixed(2)} (${totalStakeUSDValue.toFixed(2)})
+              {totalStakeNum.toFixed(2)} ({currencyFormatter.format(totalStakeUSDValue)})
             </span>
             <br />
             Pending Rewards{" "}
             <span style={{ fontWeight: "lighter" }}>
-              {pendingRewardsNum.toFixed(2)} (${rewardUSDValue.toFixed(2)})
+              {pendingRewardsNum.toFixed(2)} ({currencyFormatter.format(rewardUSDValue)})
             </span>
           </CardText>
 
